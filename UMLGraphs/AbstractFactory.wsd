@@ -1,0 +1,43 @@
+@startuml
+
+abstract class ProductA
+abstract class ProductB
+
+class ConcreteProductA1
+class ConcreteProductB1
+class ConcreteProductA2
+class ConcreteProductB2
+
+abstract class AbstractFactory
+class ConcreteFactory1
+class ConcreteFactory2
+
+class Client
+
+abstract class AbstractFactory
+{
+    + CreateProductA : ProductA
+    + CreateProductB : ProductB
+
+}
+
+
+ConcreteProductA1 ..|> ProductA
+ConcreteProductA2 ..|> ProductA
+ConcreteProductB1 ..|> ProductB
+ConcreteProductB2 ..|> ProductB
+
+ConcreteFactory1 ..|> AbstractFactory
+ConcreteFactory2 ..|> AbstractFactory
+
+ConcreteFactory1 ..> ConcreteProductA1
+ConcreteFactory2 ..> ConcreteProductA2
+
+ConcreteFactory1 ..> ConcreteProductB1
+ConcreteFactory2 ..> ConcreteProductB2
+
+Client --> AbstractFactory
+Client --> ProductA
+Client --> ProductB
+
+@enduml
