@@ -29,6 +29,9 @@ https://www.youtube.com/watch?v=c0aq8x4HnIE&ab_channel=PekingUniversityMooc-%E6%
 class Component
 {
 public:
+    /***************************************************/
+    virtual ~Component() {};            //------------------>  这里一定要写虚继承, 否则后面delete 的时候会出现内存泄露
+    /**************************************************/
     virtual void operate() = 0;
 };
 
@@ -142,24 +145,12 @@ int main()
     ca->add(la2);
     ca->add(lb2);
 
-
     //至此所有的结构已经构建成功了,这时候就需要遍历打印所有的节点,
     root->operate();
 
 
-   /*delete la;
-    delete lb;
-    delete lc;
-
-
-    delete ca;*/
-
     delete root;
-    delete la2;
-    delete lb2;
-
-    _CrtDumpMemoryLeaks(); 
+    _CrtDumpMemoryLeaks();  //开始没有写虚继承,  virtual ~Component() {}; 导致总有内存泄漏的问题
     system("pause");
-    //
 }
 
