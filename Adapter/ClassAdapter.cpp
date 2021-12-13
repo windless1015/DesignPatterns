@@ -51,12 +51,13 @@ public:
 
 
 
-int main()
+int main1()
 {
     //用Target模板创建adapter的定义
 	Target* target = new Adapter();
 	target->targetProcess();
 	delete target;
 	system("pause");
+	return 0;
 }
 
