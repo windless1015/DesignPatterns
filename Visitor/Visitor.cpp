@@ -28,62 +28,6 @@ public:
     virtual void visitConcreteElementC(ConcreteElementC* cEleC) = 0;
 };
 
-//具体visitor
-/*提供本visitor访问各个elements的具体实现*/
-class ConcreteVistorA : public Vistor
-{
-public:
-    ConcreteVistorA() {}
-    ~ConcreteVistorA() {}
-     
-    void visitConcreteElementA(ConcreteElementA* cEleA) override
-    {
-        std::cout << "VistorA  has visited ConcreteElementA." << std::endl;
-        std::cout << "ConcreteElementA data :" + cEleA->getData() << std::endl;
-    }
-
-    void visitConcreteElementB(ConcreteElementB* cEleB) override
-    {
-        std::cout << "VistorA  has visited ConcreteElementB." << std::endl;
-        std::cout << "ConcreteElementB data :" + cEleB->getData() << std::endl;
-    }
-
-    void visitConcreteElementC(ConcreteElementC* cEleC) override
-    {
-        std::cout << "VistorA  has visited ConcreteElementC." << std::endl;
-        std::cout << "ConcreteElementC data :" + cEleC->getData() << std::endl;
-    }
-
-};
-
-class ConcreteVistorB : public Vistor
-{
-public:
-    ConcreteVistorB() {}
-    ~ConcreteVistorB() {}
-
-    void visitConcreteElementA(ConcreteElementA* cEleA) override
-    {
-        std::cout << "VistorB  has visited ConcreteElementA." << std::endl;
-        std::cout << "ConcreteElementA data :" + cEleA->getData() << std::endl;
-    }
-
-    void visitConcreteElementB(ConcreteElementB* cEleB) override
-    {
-        std::cout << "VistorB  has visited ConcreteElementB." << std::endl;
-        std::cout << "ConcreteElementB data :" + cEleB->getData() << std::endl;
-    }
-
-    void visitConcreteElementC(ConcreteElementC* cEleC) override
-    {
-        std::cout << "VistorB  has visited ConcreteElementC." << std::endl;
-        std::cout << "ConcreteElementC data :" + cEleC->getData() << std::endl;
-    }
-
-};
-
-
-
 //抽象element
 class Element
 {
@@ -117,7 +61,7 @@ private:
 class ConcreteElementB : public Element
 {
 public:
-    ConcreteElementB(const std::string& data):data(data) {}
+    ConcreteElementB(const std::string& data) :data(data) {}
     ~ConcreteElementB() {}
 
     void accept(Vistor* v) override
@@ -155,6 +99,66 @@ private:
     std::string data;
 
 };
+
+
+
+//具体visitor
+/*提供本visitor访问各个elements的具体实现*/
+class ConcreteVistorA : public Vistor
+{
+public:
+    ConcreteVistorA() {}
+    ~ConcreteVistorA() {}
+
+    void visitConcreteElementA(ConcreteElementA* cEleA) override
+    {
+        std::cout << "VistorA  has visited ConcreteElementA." << std::endl;
+        std::cout << "ConcreteElementA data :" << cEleA->getData() << std::endl;
+    }
+
+    void visitConcreteElementB(ConcreteElementB* cEleB) override
+    {
+        std::cout << "VistorA  has visited ConcreteElementB." << std::endl;
+        std::cout << "ConcreteElementB data :" << cEleB->getData() << std::endl;
+    }
+
+    void visitConcreteElementC(ConcreteElementC* cEleC) override
+    {
+        std::cout << "VistorA  has visited ConcreteElementC." << std::endl;
+        std::cout << "ConcreteElementC data :" << cEleC->getData() << std::endl;
+    }
+
+};
+
+class ConcreteVistorB : public Vistor
+{
+public:
+    ConcreteVistorB() {}
+    ~ConcreteVistorB() {}
+
+    void visitConcreteElementA(ConcreteElementA* cEleA) override
+    {
+        std::cout << "VistorB  has visited ConcreteElementA." << std::endl;
+        std::cout << "ConcreteElementA data :" << cEleA->getData() << std::endl;
+    }
+
+    void visitConcreteElementB(ConcreteElementB* cEleB) override
+    {
+        std::cout << "VistorB  has visited ConcreteElementB." << std::endl;
+        std::cout << "ConcreteElementB data :" << cEleB->getData() << std::endl;
+    }
+
+    void visitConcreteElementC(ConcreteElementC* cEleC) override
+    {
+        std::cout << "VistorB  has visited ConcreteElementC." << std::endl;
+        std::cout << "ConcreteElementC data :" << cEleC->getData() << std::endl;
+    }
+
+};
+
+
+
+
 
 //这里没有设置ObjectStructure, 也可以添加一个,本质上其实就是在管理  Elements
 
